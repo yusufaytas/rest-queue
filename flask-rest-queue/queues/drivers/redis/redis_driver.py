@@ -15,15 +15,19 @@ class RedisDriver:
         self.redis_pool = redis.ConnectionPool(host=host,port=port,db=db,password=password)
         self.persistent = persistent
     def create_connection(self):
+        """Creates a new connection from Connection Pool"""
         assert self.redis_pool is not None
         self.redis_conn = redis.StrictRedis(connection_pool=self.redis_pool)
     def end_pool_connection(self):
+        """Closes the Pool Connection"""
         assert self.redis_pool is not None
         self.redis_pool.disconnect()
     def create_pubsub(self):
+        """Creates PubSub Handler"""
         assert self.redis_conn is not None
         self.pubsub = self.redis_conn.pubsub()
     def subscriber_listener(self,queue_name,callback_func=None):
+        """Listener for the Subscriber"""
         assert queue_name is not None
 
         if self.persistent is False:
@@ -44,6 +48,7 @@ class RedisDriver:
                     callback_func(message[1])
                 
     def publish(self,queue_name,message,callback_func=None,callback_attr=None):
+        """Publishes new message to the Queue"""
         assert self.redis_conn is not None
         if self.persistent is False:
             self.redis_conn.publish(queue_name,message)

@@ -6,4 +6,4 @@ In such cases, we need to integrate subsystems. Thus, the most proper way is to 
 
 However, we have lots of opportunity to use as a message queue between subsystems and we have to know the client libraries of the message queues. Therefore, we need to handle another stuff that is to learn the details of the message queue systems. 
 
-Our project mainly has a goal to make abstraction over the message queues using the REST interface. The project aims to supports the message queues starting from RabbitMQ and Redis.
+Our project mainly has a goal to make abstraction over the message queues using the REST interface. The project aims to supports the message queues and databases with the help of magnificant library Kombu by Celery Team.

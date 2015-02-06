@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-restqueue.queue.driver.redis
+restqueue.queue.driver.redis_driver
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Queue Driver for Redis

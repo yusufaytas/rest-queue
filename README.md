@@ -1,4 +1,4 @@
-# Flask Rest Service for Message Brokers
+# Rest Service for Message Brokers
 
 Nowadays, we have many subsystems within our web applications or mobile applications. Moreover, we have many subsystems(tasks) that takes too much time such as compression, data analytics and so on.
 

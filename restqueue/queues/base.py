@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-restqueue.queue.base
+restqueue.queues.base
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Queue Base Class
@@ -15,11 +15,22 @@ try:
 except:
     import urllib.parse as urlparse
 
+DRIVERS = {
+        'redis' : 'restqueue.queues.drivers.redis_driver',
+        'rabbitmq' : 'restqueue.queues.drivers.rabbitmq_driver',
+        'mongodb' : 'restqueue.queues.drivers.mongodb_driver',
+        'qpid' : 'restqueue.queues.drivers.qpid_driver',
+        'sqs' : 'restqueue.queues.drivers.sqs_driver',
+        'zaqar' : 'restqueue.queues.drivers.zaqar_driver'
+}
+
 class QueueBase:
     def __init__(self, url):
         self.url = url
     def parse_url(self):
         """ This method's main idea is taken from the Kenneth Reitz's dj-database-url """
+
+        #TODO: Other Message Queues should be added here
         urlparse.uses_netloc.append('redis')
         urlparse.uses_netloc.append('rabbitmq')
         urlparse.uses_netloc.append('mongodb')
@@ -37,4 +48,6 @@ class QueueBase:
 
         self.parsed_url = {'engine':engine, 'hostname':hostname, 'username': user,
                             'password': password, 'port': port}
-
+    def get_queue_driver(self):
+        self.parse_url()
+        return DRIVERS[self.parsed_url['engine']]

@@ -21,7 +21,9 @@ DRIVERS = {
         'mongodb' : 'restqueue.queues.drivers.mongodb_driver',
         'qpid' : 'restqueue.queues.drivers.qpid_driver',
         'sqs' : 'restqueue.queues.drivers.sqs_driver',
-        'zaqar' : 'restqueue.queues.drivers.zaqar_driver'
+        'zaqar' : 'restqueue.queues.drivers.zaqar_driver',
+        'nsq' : 'restqueue.queues.drivers.nsq_driver',
+        'memcached' : 'restqueue.queues.drivers.memcached_driver'
 }
 
 class QueueBase:

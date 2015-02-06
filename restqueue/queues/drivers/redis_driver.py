@@ -8,7 +8,10 @@ Queue Driver for Redis
 
 """
 
-import redis
+try:
+    import redis
+except ImportError:
+    raise ImportError('You should install redis client API for Python - pip install redis')
 
 class RedisDriver:
     def __init__(self, persistent=False,host='localhost', port=6379, db=0, password=None):

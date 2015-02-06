@@ -1,7 +1,5 @@
 flask
 plyvel
 requests
-redis
-pika
 gevent
-pyzmq
+kombu

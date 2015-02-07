@@ -53,3 +53,11 @@ class QueueBase:
     def get_queue_driver(self):
         self.parse_url()
         return DRIVERS[self.parsed_url['engine']]
+    def connect(self):
+        pass
+    def disconnect(self):
+        pass
+    def set_producer(self):
+        pass
+    def set_consumer(self):
+        pass

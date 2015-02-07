@@ -8,11 +8,14 @@ Queue Base Class
 
 """
 
-from kombu import Connection
+from kombu import Connection, Producer, Consumer
 
 class QueueBase:
-    def __init__(self, url):
+    def __init__(self, url, timeout=None, transport_options=None, is_pool_enabled=False):
         self.url = url
+        self.timeout = timeout
+        self.transport_options = transport_options
+        self.is_pool_enabled = is_pool_enabled
     def parse_url(self):
         """ Parses the url and creates connection object """
         self.connection = Connection(self.url)
@@ -25,7 +28,9 @@ class QueueBase:
     def disconnect(self, disconnect_hook=None, disconnect_hook_params=None):
         self.connection.close()
         disconnect_hook(*disconnect_hook_params)
-    def set_producer(self):
+    def create_producer(self):
         pass
-    def set_consumer(self):
+    def publish_message(self):
+        pass
+    def create_consumer(self):
         pass

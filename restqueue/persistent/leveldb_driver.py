@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-restqueue.persistent.driver.leveldb_driver
+restqueue.persistent.leveldb_driver
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Persistent Driver for LevelDB
@@ -10,7 +10,7 @@ Persistent Driver for LevelDB
 
 import plyvel
 
-class LevelDBDriver:
+class LevelDBDriver(object):
     def __init__(self, db_url=None):
         self.db_url = db_url
         if db_url is None:

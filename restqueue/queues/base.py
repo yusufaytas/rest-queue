@@ -10,7 +10,7 @@ Queue Base Class
 
 from kombu import Connection, Producer, Consumer
 
-class QueueBase:
+class QueueBase(object):
     def __init__(self, url, timeout=None, transport_options=None, is_pool_enabled=False):
         self.url = url
         self.timeout = timeout

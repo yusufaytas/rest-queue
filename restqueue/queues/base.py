@@ -20,9 +20,3 @@ def connect_to_queue(connection_hook=None, connection_hook_params=None):
 def disconnect_from_queue(disconnect_hook=None, disconnect_hook_params=None):
     connection.close()
     disconnect_hook(*disconnect_hook_params)
-def create_producer():
-    pass
-def publish_message():
-    pass
-def create_consumer():
-    pass
